@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import './Main.css';
+import { QuestionsComponents } from './QuestionsComponents';
+import questions from './data';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <div className="mt-20 mb-10 p-8 shadow-lg mx-auto max-w-3xl w-11/12 bg-white rounded">
+                <div className="md:flex md:justify-between">
+                    <h2 className="text-sm sm:text-xl  tracking-wider md:mt-2">Questions And Answers About Login</h2>
+                    <div className="flex flex-col">
+                    {
+                        questions.map(question => {
+                            return (
+                                <QuestionsComponents key={question.id} {...question} />
+                            )
+                        })
+                    }
+                    </div>
+                </div>
+            </div>
+    </React.Fragment>
   );
 }
 
